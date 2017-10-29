@@ -26,9 +26,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def following
+  def followings
     @user = User.find(params[:id])
-    @followings = user.followings.page(params[:page])
+    @followings = @user.followings.page(params[:page])
     counts(@user)
   end
   
@@ -36,8 +36,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page])
     counts(@user)
-  end  
-    
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    @microposts = @user.favorite_microposts.page(params[:page])
+    counts(@user)
+    render :show
+  end
+  
   private
 
   def user_params

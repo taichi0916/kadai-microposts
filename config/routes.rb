@@ -10,11 +10,11 @@ Rails.application.routes.draw do
    member do
      get :followings
      get :followers
+     get :favorites
    end
-   collection do 
-    ger :search
  end
  
- resources :microposts, only: [:create, :destory]
- resources :relationships,only: [:create, :destory]
+ resources :microposts, only: [:create, :destroy]
+ resources :relationships,only: [:create, :destroy]
+ resources :favorites,only: [:create, :destroy]
 end
